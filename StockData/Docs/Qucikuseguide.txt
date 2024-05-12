@@ -1,0 +1,17 @@
+#Steps for installation : 
+
+1) Clone the git repo in you local environment
+2) Generate  apikey [ See Alphavantage APIKey.txt]
+3) cd StockData/
+4) make 
+5) It will create binary with name "main"
+6) to run binary give parameters : ./main APIKEY SYMBOL PUBLISHINTERVAL
+	e.g. ./main V14DEWH6E2YMX20G AAPL 30 
+7) Press Ctrl+C to stop application.
+
+#Keyword args for main 
+
+1) APIkey : Get your personal key form alphavantage.com , free key has limitation of 25 trials per days
+2) Symbol : Name of security for which you want to trade data.
+3) Publishinterval : Time interval in seconds, after this interval tick will published.
+

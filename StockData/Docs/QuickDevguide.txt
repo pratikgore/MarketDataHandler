@@ -1,0 +1,30 @@
+Application summary : 
+
+This is demo feedhandler which stimulated working of reltime feed handler.
+It will help to publish data as per given time interval. 
+i.e. if you give command 
+	./main V14DEWH6E2YMX20G AAPL 30 
+application will publish data for symbol AAPL in every 30 seconds . 
+It's useful to create fake market data feed for any symbol.
+
+Working : 
+
+App has two threads . 
+
+1) Main thread : Controls creating feed, making API call and generating .json from fetched symbol 
+2) Publisher thread : it's infinitely running thread which control publishing of ticks.
+
+Code flow : 
+
+./main V14DEWH6E2YMX20G AAPL 30 
+main.cpp -> Request for symbol , creates feedhandler for symbol and launch publisher thread.
+feedhandler.cpp -> create api call and generates symbol.json and parse data into 'double : value '
+format from json 
+publisher -> continuesly checks for data in InQ , if data is present and if current time is > last tick
+published time it will publish a tick. 
+
+Developers scope : 
+
+1) Currently api use by default  outputsize = full , add option to make is configurable
+2) Add config file and read parameter from it. 
+3) Find out another way than regex parsing to parse .json file in "double : value" format. 
